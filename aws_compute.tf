@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "wordpress" {
-  vpc_zone_identifier = [module.vpc.private_subnets[0], module.vpc.private_subnets[1]]
+  vpc_zone_identifier = module.vpc.private_subnets
 
   desired_capacity = 2
   max_size         = 2
@@ -9,7 +9,11 @@ resource "aws_autoscaling_group" "wordpress" {
 
   launch_template {
     id      = aws_launch_template.dockerized_wordpress.id
-    version = "$Latest"
+    version = aws_launch_template.dockerized_wordpress.latest_version
+  }
+
+  instance_refresh {
+    strategy = "Rolling"
   }
 }
 
@@ -22,4 +26,6 @@ resource "aws_launch_template" "dockerized_wordpress" {
   instance_type = "t2.micro"
 
   user_data = base64encode(local.setup_script)
+
+  depends_on = [local.setup_script]
 }

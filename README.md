@@ -9,12 +9,14 @@ Note: This is not intended for production use. It was designed for deployment on
 
 # Setup
 
-1. Setup the Environmental variables required to access AWS API.
-2. Pick a WordPress image/version (the default is probably outdated)
+1. Configure aws-cli
+2. Pick a WordPress image you'd like to run (the one provided in this repo is likely outdated) and update terraform.tfvars
 3. Run terraform plan
-4. Run terraform deploy
-5. Wait
+4. Run terraform apply 
+5. Wait...
 6. Visit the URL printed at the bottom
+7. ...
+8. Run terraform destroy
 
 # Contributing
 

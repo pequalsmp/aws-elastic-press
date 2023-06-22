@@ -5,8 +5,8 @@ resource "random_string" "wp_user" {
 
 resource "random_password" "wp_pass" {
   length           = 16
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
+  special          = false
+  #override_special = "!#$%&*()-_=+[]{}<>:?"
 }
 
 resource "random_string" "wp_name" {

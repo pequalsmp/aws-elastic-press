@@ -1,4 +1,3 @@
 container = {
-  tag    = "6.2.2-php8.2-apache"
-  digest = "sha256:49be2e34db386890752ae32edbfb26ccd574267193ac007fe837d26a2a83a7e4"
+  digest = "sha256:75ba772cce073ec2aa6cec95c5ca229dfde9029c49874350a971499d567adae7"
 }
