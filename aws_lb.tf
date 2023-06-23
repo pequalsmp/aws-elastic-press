@@ -14,6 +14,7 @@ resource "aws_alb_target_group" "apache" {
   vpc_id   = module.vpc.vpc_id
 }
 
+# TODO: TLS certificate
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_lb.alb1.arn
   port              = "80"

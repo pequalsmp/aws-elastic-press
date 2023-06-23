@@ -1,6 +1,18 @@
-This project aims to be a learning demonstration of setting WordPress in the cloud (AWS) by utilizing Terraform.
+This project aims to be a learning demonstration of setting WordPress in the cloud (AWS) by utilizing [Terraform](https://www.terraform.io/docs).
 
-Note: This is not intended for production use. It was designed for deployment on AWS Free Tier and such lacks any form of high-availability or built-in resiliency.
+Note: This is not intended for production use.
+
+It was designed to utilize AWS Free Tier and as such it may lack high-availability or performance required for production deployments.
+
+# Cost
+
+The only component with no Free Tier in the project is the [NAT Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html).
+
+You pay for every hour the NAT Gateway is running and for every GB that goes through an Elastic IP.
+
+Best to keep it short and quickly destroy after deployment to minimize cost.
+
+Future iterations may remove this dependency as even though NAT Gateways are useful in the real world, learning should be free.
 
 # Prerequisites
 

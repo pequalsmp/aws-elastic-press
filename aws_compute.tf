@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "wordpress" {
 resource "aws_launch_template" "dockerized_wordpress" {
   name = "WordPress"
 
-  description = "Image with a setup script to install efs-utils, docker upon provision and pull WordPress image from a registry"
+  description = "Image with a setup script to install efs-utils, docker and pull WordPress image from a registry"
 
   image_id      = data.aws_ami.ubuntu.image_id
   instance_type = "t2.micro"
