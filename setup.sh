@@ -6,9 +6,9 @@ cd /tmp/aws-efs-utils-* || exit
 bash build-deb.sh
 cd - || exit
 apt-get install -y /tmp/aws-efs-utils-*/build/amazon-efs-utils*deb
-mkdir -p "/var/www/html" || exit
-echo "${efs.id}:/ /var/www/html efs _netdev,noresvport,tls 0 0" | tee -a /etc/fstab
+echo "${efs.id}:/ /mnt efs _netdev,noresvport,tls 0 0" >> /etc/fstab
 mount -fa
+mkdir -p "/mnt/wordpress" || exit
 systemctl enable --now docker
 docker run \
 	--env WORDPRESS_DB_HOST="${wp.db.host}" \
@@ -19,5 +19,5 @@ docker run \
 	--detach \
 	--publish 80:80 \
 	--restart unless-stopped \
-	--volume /var/www/html:/var/www/html \
+	--volume /mnt/wordpress:/var/www/html \
 	"wordpress@${container.digest}"
