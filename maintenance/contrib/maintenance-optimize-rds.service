@@ -1,0 +1,10 @@
+[Unit]
+Description=RDS maintenance and optimization
+
+[Service]
+Environment="VIRTUAL_ENV=/opt/maintenance/.venv"
+EnvironmentFile=/opt/maintenance/env
+ExecStart=/usr/bin/env ${VIRTUAL_ENV}/bin/python3 /opt/maintenance/main.py
+
+[Install]
+WantedBy=multi-user.target

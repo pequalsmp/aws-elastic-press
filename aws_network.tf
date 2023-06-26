@@ -2,7 +2,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = ">= 5.0.0"
 
-  name = local.name
+  name = local.aws.name
   cidr = local.aws.cidr
 
   azs             = local.aws.azs
@@ -29,14 +29,14 @@ module "vpc" {
   public_outbound_acl_rules = concat(local.aws.network_acls["default_outbound"], local.aws.network_acls["public_outbound"])
 
   default_network_acl_tags = {
-    Name = "${local.name}-default"
+    Name = "${local.aws.name}-default"
   }
 
   default_route_table_tags = {
-    Name = "${local.name}-default"
+    Name = "${local.aws.name}-default"
   }
 
   default_security_group_tags = {
-    Name = "${local.name}-default"
+    Name = "${local.aws.name}-default"
   }
 }

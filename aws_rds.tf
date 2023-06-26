@@ -1,5 +1,5 @@
 resource "aws_db_subnet_group" "db-subnet" {
-  name = local.name
+  name = local.aws.name
 
   subnet_ids = module.vpc.private_subnets
 }
@@ -9,7 +9,7 @@ resource "aws_db_instance" "rds01" {
   identifier        = "rds01"
   instance_class    = "db.t2.micro"
 
-  db_subnet_group_name = local.name
+  db_subnet_group_name = local.aws.name
 
   engine         = "mariadb"
   engine_version = "10.6"

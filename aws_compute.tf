@@ -26,6 +26,13 @@ resource "aws_launch_template" "dockerized_wordpress" {
   instance_type = "t2.micro"
 
   user_data = base64encode(local.setup_script)
+}
 
-  depends_on = [local.setup_script]
+resource "aws_instance" "maintenance" {
+  ami             = data.aws_ami.ubuntu.image_id
+  instance_type   = "t2.micro"
+  subnet_id       = module.vpc.private_subnets[0]
+  security_groups = [module.vpc.default_security_group_id]
+
+  user_data_base64 = base64encode(local.maintenance_script)
 }

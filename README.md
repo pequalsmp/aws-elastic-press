@@ -21,14 +21,37 @@ Future iterations may remove this dependency as even though NAT Gateways are use
 
 # Setup
 
-1. Configure aws-cli
-2. Pick a WordPress image you'd like to run (the one provided in this repo is likely outdated) and update terraform.tfvars
-3. Run terraform plan
-4. Run terraform apply 
-5. Wait...
-6. Visit the URL printed at the bottom
-7. ...
-8. Run terraform destroy
+1. Configure your AWS credentials (manually or via aws-cli)
+2. Clone this repo and cd into it
+3. Pick a WordPress image from [DockerHub](https://hub.docker.com/_/wordpress) (the one provided in this repo is likely outdated) and update terraform.tfvars
+4. Run bash build.sh
+5. Run terraform plan
+6. Run terraform apply 
+7. Wait...
+8. Visit the URL printed at the bottom
+9. ...
+10. Run terraform destroy to tear-down the infrastructure
+
+# TODO
+
+- Add tags to resources
+- Generate (if possible) TLS certificate from Let's Encrypt
+- Evaluate Firewall rules and narrow-down the overly permissive ones
+- Evaluate and optimize cost
+
+# WhyNot
+
+### Use the Elastic Container Service
+
+It's fairly straight-forward to do so. This is an example of 
+
+### Use Lambda for periodic tasks
+
+Same as above. Lambda is trivial to setup and 
+
+### Build container images and deploy them, instead of user_data hacks
+
+It's quite a hassle to build to images and you'll be billed for every pull
 
 # Contributing
 
